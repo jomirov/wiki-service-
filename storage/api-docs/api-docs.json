@@ -1,0 +1,21 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "KZ-Culture-Service/Laravel",
+        "description": "API Doc",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/wiki/{title}": {
+            "get": {
+                "summary": "Search for information",
+                "operationId": "01b9d89a6adf20191347c086d7cd21cc",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -151,10 +151,6 @@ main b {
     color:#2268ff;
 }
 
-main a {
-    color: #333;
-}
-
 main .infobox{
     float: right;
 }
@@ -164,8 +160,30 @@ main .mw-heading {
     color:#2268ff;
 }
 
-main figure {
+main figure, main .gallerybox {
+    display: table;
+    padding: 5px;
+    margin: 10px;
     width: max-content;
+    background-color:#d8e4ff;
+    outline: 2px solid #2268ff;
+}
+
+main figcaption {
+    display: table-caption;
+    caption-side: bottom;
+    background:#d8e4ff;
+    padding: 5px;
+}
+
+main .mw-halign-left {
+    clear: left;
+    float: left;
+}
+
+main .mw-halign-right {
+    clear: right;
+    float: right;
 }
 
 main .gallery {
@@ -175,6 +193,10 @@ main .gallery {
     width: 600px;
     margin: 0 auto;
 }
+main .gallerybox .thumb {
+    display: flex;
+    justify-content: center;
+}
 
 main figure {
     clear: right;
@@ -182,10 +204,17 @@ main figure {
 }
 
 main .mw-halign-center {
-    display:flex;
     flex-direction: column;
     clear: none;
     float: none;
-    margin: 0 auto;
+    margin: 10px auto;
     align-items: center
+}
+
+main th, th * {
+    background-color:#d8e4ff;
+    color:#2268ff
+}
+main td {
+    background-color:#edf3ff;
 }

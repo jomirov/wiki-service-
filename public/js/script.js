@@ -1,10 +1,12 @@
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
     let data = localStorage.getItem("data");
     if (!data) return false;
     document.querySelector("main").innerHTML = data;
 
     removeElements([".mw-editsection", "sup", ".metadata"]);
     changeImagesRef();
+    thColorChange();
+    tdColorChange();
 })
 
 function removeElements(element_names) {
@@ -32,3 +34,27 @@ document.getElementById("search-form").addEventListener("submit", (event) => {
     }
     window.location.href = `/wiki/${title}`;
 })
+
+function thColorChange() {
+    elements = document.querySelectorAll("th");
+    elements.forEach(el => {
+        styleAttr = el.getAttribute("style");
+        if (styleAttr && styleAttr.includes("color")) {
+            el.style.backgroundColor = "#d8e4ff";
+            el.style.color = "#2268ff";
+        } else if (styleAttr && styleAttr.includes("background")) {
+            el.style.background = "#d8e4ff";
+        }
+    })
+}
+
+function tdColorChange() {
+    elements = document.querySelectorAll("td");
+    elements.forEach(el => {
+        styleAttr = el.getAttribute("style");
+        if (styleAttr && (styleAttr.includes("bold") || styleAttr.includes("background"))) {
+            el.style.background = "#d8e4ff";
+            el.style.color = "#2268ff";
+        }
+    })
+}
