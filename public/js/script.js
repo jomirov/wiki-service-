@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     changeImagesRef();
     thColorChange();
     tdColorChange();
+    setParagraphSpacing();
+    searchDirectionsStyle();
 })
 
 function removeElements(element_names) {
@@ -57,4 +59,26 @@ function tdColorChange() {
             el.style.color = "#2268ff";
         }
     })
+}
+
+function setParagraphSpacing() {
+    p_elements = document.querySelectorAll("main > div > p");
+    p_elements.forEach(el => {
+        el.innerHTML = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + el.innerHTML;
+    })
+}
+
+function searchDirectionsStyle() {
+    if (document.querySelector(".redirectMsg")) {
+        redir_msg = document.querySelector(".redirectMsg");
+
+        redir_p = redir_msg.querySelector("p").textContent = "Сұраныс бойынша келесі деректер табылды:";
+        
+        redir_text = redir_msg.querySelector(".redirectText");
+        redir_li = redir_text.querySelectorAll("li");
+
+        redir_li.forEach(li => {
+            li.innerHTML += "<div class='redir-vis-el'>→</div>"
+        });
+    }
 }

@@ -147,6 +147,10 @@ main {
     color: #333;
 }
 
+main > div {
+    width: inherit;
+}
+
 main b {
     color:#2268ff;
 }
@@ -156,7 +160,7 @@ main .infobox{
 }
 
 main .mw-heading {
-    margin-block: 20px;
+    margin: 20px 40px;
     color:#2268ff;
 }
 
@@ -167,6 +171,8 @@ main figure, main .gallerybox {
     width: max-content;
     background-color:#d8e4ff;
     outline: 2px solid #2268ff;
+    vertical-align:top;
+    flex-wrap: nowrap;
 }
 
 main figcaption {
@@ -189,8 +195,9 @@ main .mw-halign-right {
 main .gallery {
     display: flex;
     list-style-type: none;
-    justify-content:  space-between;
-    width: 600px;
+    justify-content: space-between;
+    width: inherit;
+    flex-wrap: wrap;
     margin: 0 auto;
 }
 main .gallerybox .thumb {
@@ -217,4 +224,47 @@ main th, th * {
 }
 main td {
     background-color:#edf3ff;
+}
+
+main .redirectMsg > p {
+    color:#2268ff;
+    font-weight: bolder;
+}
+
+main .redirectText {
+    gap: 10px;
+    list-style-type: none;
+    padding-block: 30px;
+}
+main .redirectText > li {
+    background-color: #2268ff;
+    text-decoration: none;
+    margin-left: 50px;
+    padding-left: 20px;
+    border-radius: 5px;
+    transition: ease-in-out 0.3s;
+    position: relative;
+}
+
+main .redirectText > li > a {
+    display: flex;
+    color: white;
+    width: 100%;
+}
+
+main .redirectText .redir-vis-el {
+    position: absolute;
+    left: -50px;
+    top: 0;
+    color:#2268ff;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+main .redirectText > li:hover {
+    transform: translateX(50px)
+}
+
+main ul, main ol {
+    padding-left: 30px;
 }
