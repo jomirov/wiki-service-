@@ -1,6 +1,6 @@
 <header id="header">
     <nav class="container">
-        <img src="#" alt="logo"/>
+        <img onclick="window.location.href='/wiki'" src="{{ asset('images/logo.png') }}" style="height: 50px" alt="logo"/>
         <ul>
             <li>Қалалар
                 <div>

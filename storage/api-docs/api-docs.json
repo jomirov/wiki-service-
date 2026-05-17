@@ -8,8 +8,19 @@
     "paths": {
         "/wiki/{title}": {
             "get": {
-                "summary": "Search for information",
+                "summary": "Get whole information",
                 "operationId": "01b9d89a6adf20191347c086d7cd21cc",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/wiki/{title}/intro": {
+            "get": {
+                "summary": "Get introduction data",
+                "operationId": "4ed587d99260c60b55d6c116569b526c",
                 "responses": {
                     "200": {
                         "description": "Success"

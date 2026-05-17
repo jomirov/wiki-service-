@@ -1,15 +1,66 @@
 document.addEventListener('DOMContentLoaded', () => {
     let data = localStorage.getItem("data");
-    if (!data) return false;
-    document.querySelector("main").innerHTML = data;
+    let main = document.querySelector("main");
+    
+    if (window.location.pathname == "/wiki") {
+        setDataIntoPointers();
+        return;
+    }
+    
+    if (!data) {
+        main.innerHTML = 
+        `<div class="pointer-div">
+            <p class="pointer-div--p">Өкінішке орай, сұраныс бойынша деректер табылмады...</p>
+        </div>`;
+        showPointer();
+
+        return;
+    };
+
+    main.innerHTML = data;
 
     removeElements([".mw-editsection", "sup", ".metadata"]);
     changeImagesRef();
     thColorChange();
-    tdColorChange();
+    tdColorChange();    
     setParagraphSpacing();
     searchDirectionsStyle();
 })
+
+function showPointer() {
+    pointer = document.querySelector(".pointer-div");
+    pointer.style.display = "flex";
+}
+
+async function setDataIntoPointers() {
+    showPointer();
+    
+    let elements = document.querySelectorAll(".pointer-div--article-card");
+
+    let proms = [];
+    elements.forEach(el => {
+        if (el.getAttribute("data-title")){
+            el.style.display = "block";
+            let title = el.getAttribute("data-title");
+            let intro_data = fetch(`http://127.0.0.1:8000/api/wiki/${title}/intro`);
+            proms.push(intro_data);
+        }
+    });
+ 
+    let responses = await Promise.all(proms)
+    let results = await Promise.all(
+        responses.map(r => r.json())
+    );
+    
+    results.forEach((data,index) => {
+        let pages = data.query.pages;
+        let page = Object.values(pages)[0];
+        let extract = page.extract;
+        results.push(extract);
+        elements[index].innerHTML = extract;
+    })
+    
+}
 
 function removeElements(element_names) {
     element_names.forEach(element_name => {
@@ -34,7 +85,8 @@ document.getElementById("search-form").addEventListener("submit", (event) => {
     if (title.includes(" ")) {
         title.replace(" ", "_");
     }
-    window.location.href = `/wiki/${title}`;
+    if (title=="") window.location.href= "/wiki";
+    else window.location.href = `/wiki/${title}`;
 })
 
 function thColorChange() {

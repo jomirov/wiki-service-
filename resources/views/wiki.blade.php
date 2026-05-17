@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kz-Wiki</title>
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="icon" type="image/png" href={{ asset("/images/logo.png") }}>
 </head>
 <body>
     @include('Components/header')
     @include('Components/post-header')
     <main class="container">
+        @include('Pages/welcome')
     </main>
     <script>localStorage.setItem("data", @json($data ?? ""))</script>
     <script src="{{ asset('js/script.js') }}"></script>

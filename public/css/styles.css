@@ -26,7 +26,11 @@ header * {
 }
 
 header > nav {
-    gap: 200px
+    gap: 200px;
+    align-items:center;
+}
+header > nav > img {
+    cursor: pointer;
 }
 
 header > nav > ul {
@@ -139,6 +143,55 @@ header > nav > ul > li > div > ul > li > a{
     cursor: pointer;
 }
 
+.pointer-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 20px;
+}
+.pointer-div, .pointer-div--article-card {
+    background:#d8e4ff;
+    display: none;
+    height: 200px;
+    padding: 15px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #2268ff;
+    border-radius: 5px;
+}
+
+.pointer-div--p {
+    display: flex;
+    font-size: 20px;
+    color:#2268ff;
+    font-weight: 500;
+}
+
+.pointer-div {
+    width: 100%;
+}
+
+.pointer-div--article-card{
+    flex-basis: calc(50% - 10px);
+    display: none;
+    overflow:hidden;
+    position: relative;
+}
+
+.pointer-div--readArticle-btn {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+    bottom: 0;
+    background:#2268ff;
+    height: 50px;
+    width: 100px;
+    color: white;
+    border-top-left-radius: 5px;
+}
+
 main {
     height: max-content;
     margin-top: 30px;
@@ -238,10 +291,10 @@ main .redirectText {
 }
 main .redirectText > li {
     background-color: #2268ff;
-    text-decoration: none;
     margin-left: 50px;
-    padding-left: 20px;
+    padding-inline: 20px;
     border-radius: 5px;
+    width: max-content;
     transition: ease-in-out 0.3s;
     position: relative;
 }
@@ -249,7 +302,7 @@ main .redirectText > li {
 main .redirectText > li > a {
     display: flex;
     color: white;
-    width: 100%;
+    width: max-content;
 }
 
 main .redirectText .redir-vis-el {

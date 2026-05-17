@@ -9,7 +9,7 @@ class WikiController extends Controller {
 
     #[OA\Get(
         path: "/wiki/{title}",
-        summary: "Search for information",
+        summary: "Get whole information",
         responses: [
             new OA\Response(
                 response: 200,
@@ -19,9 +19,23 @@ class WikiController extends Controller {
     )]
     public function getInfo($title) {
         $wikiService = WikiService::object();
-        $data = $wikiService->searchData($title);
-        return view('wiki', [
-            'data' => $data["parse"]["text"]["*"] ?? ""
-        ]);
+        $data = $wikiService->parseAll($title);
+        return view('wiki', ['data' => $data["parse"]["text"]["*"] ?? ""]);
+    }
+
+    #[OA\Get(
+        path: "/wiki/{title}/intro",
+        summary: "Get introduction data",
+        responses: [
+            new OA\Response(
+                response: 200,
+                description: "Success"
+            )
+        ]
+    )]
+    public function getIntro($title) {
+        $wikiService = WikiService::object();
+        $data = $wikiService->parseIntro($title);
+        return $data ?? "";
     }
 }
