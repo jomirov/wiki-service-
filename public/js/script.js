@@ -44,6 +44,7 @@ async function setDataIntoPointers() {
             let title = el.getAttribute("data-title");
             let intro_data = fetch(`http://127.0.0.1:8000/api/wiki/${title}/intro`);
             proms.push(intro_data);
+            el.innerHTML += `<a href="wiki/${title}" class='pointer-div--readArticle-btn'>Оқу</a>`
         }
     });
  
@@ -57,7 +58,7 @@ async function setDataIntoPointers() {
         let page = Object.values(pages)[0];
         let extract = page.extract;
         results.push(extract);
-        elements[index].innerHTML = extract;
+        elements[index].innerHTML += extract;
     })
     
 }

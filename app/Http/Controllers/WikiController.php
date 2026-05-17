@@ -39,3 +39,4 @@ class WikiController extends Controller {
         return $data ?? "";
     }
 }
+
